@@ -5,13 +5,13 @@ import jakarta.persistence.Id;
 @Entity
 public class Registro {
     @Id
-    private long num_registro;
+    private int num_registro;
     private String fecha;
     private String hora;
     private long num_historia;
     private long num_usuario;
 
-    public Registro(long num_registro, String fecha, String hora, long num_historia, long num_usuario) {
+    public Registro(int num_registro, String fecha, String hora, long num_historia, long num_usuario) {
         this.num_registro = num_registro;
         this.fecha = fecha;
         this.hora = hora;
@@ -23,7 +23,7 @@ public class Registro {
         return num_registro;
     }
 
-    public void setNum_registro(long num_registro) {
+    public void setNum_registro(int num_registro) {
         this.num_registro = num_registro;
     }
 
