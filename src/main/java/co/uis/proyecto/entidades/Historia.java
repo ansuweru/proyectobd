@@ -1,7 +1,8 @@
 package co.uis.proyecto.entidades;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
+@Entity
 public class Historia {
     @Id
     private long num_historia;

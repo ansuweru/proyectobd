@@ -1,10 +1,11 @@
 package co.uis.proyecto.entidades;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.Id;
 
 @Entity
 public class Usuario {
+    @Id
     private long cedula;
     private String nombre_apellido;
     private String fecha_nacimiento;
@@ -16,7 +17,6 @@ public class Usuario {
         this.fecha_nacimiento = fecha_nacimiento;
         this.nacionalidad = nacionalidad;
     }
-    @OneToMany(mappedBy = "usuario")
     public long getCedula() {
         return cedula;
     }

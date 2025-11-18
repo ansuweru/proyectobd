@@ -1,7 +1,9 @@
 package co.uis.proyecto.entidades;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+@Entity
 public class Solicitud {
     @Id
     private long num_solicitud;
