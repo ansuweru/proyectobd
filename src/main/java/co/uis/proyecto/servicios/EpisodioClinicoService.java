@@ -1,4 +1,4 @@
 package co.uis.proyecto.servicios;
 
-public class HistoriaService {
+public class EpisodioClinicoService {
 }
