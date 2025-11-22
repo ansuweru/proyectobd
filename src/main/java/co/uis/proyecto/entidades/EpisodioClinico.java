@@ -3,14 +3,19 @@ package co.uis.proyecto.entidades;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity@Table(name="episodio_clinico")
-@Data@NoArgsConstructor@AllArgsConstructor@Builder
+@Entity
+@Table(name = "episodio_clinico")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class EpisodioClinico {
-    @Id@Column(name = "num_episodio")
+    @Id
+    @Column(name = "num_episodio")
     private int num_episodio;
 
     @Column(name = "cedula")
-    private int cedula;
+    private Long cedula;
 
     @Column(name = "id_medico")
     private int id_medico;
@@ -24,11 +29,12 @@ public class EpisodioClinico {
     @Column(name = "anamnesis")
     private String anamnesis;
 
+    @Column(name = "examen_fisico")
+    private String examen_fisico;
+
     @Column(name = "plan_manejo")
     private String plan_manejo;
 
     @Column(name = "estado")
-    private boolean estado;
+    private String estado;
 }
-
-

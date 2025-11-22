@@ -1,2 +1,18 @@
-<app-menu-component></app-menu-component>
-<router-outlet></router-outlet>
+<nav class="navbar navbar-dark bg-primary shadow-sm mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-file-medical-alt me-2"></i> Sistema de Archivo Clínico
+        </a>
+        <span class="navbar-text text-white">
+            <i class="fas fa-user-circle"></i> Dr. Admin
+        </span>
+    </div>
+</nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<footer class="text-center py-4 text-muted border-top mt-5">
+    <small>&copy; 2025 Sistema de Gestión de Historias Clínicas. Prototipo Visual v1.0</small>
+</footer>

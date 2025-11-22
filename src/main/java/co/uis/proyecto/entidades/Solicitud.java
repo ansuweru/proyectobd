@@ -3,17 +3,22 @@ package co.uis.proyecto.entidades;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity@Table(name="solicitud")
-@Data@NoArgsConstructor@AllArgsConstructor@Builder
+@Entity
+@Table(name = "solicitud")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Solicitud {
-    @Id@Column(name="num_solicitud")
+    @Id
+    @Column(name = "num_solicitud")
     private long num_solicitud;
-    @Column(name="descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
 
-    @Column(name="fecha")
+    @Column(name = "fecha_solicitud")
     private String fecha;
 
-    @Column(name="cedula_usuario")
-    private long cedula_usuario;
+    @Column(name = "cedula")
+    private Long cedula;
 }

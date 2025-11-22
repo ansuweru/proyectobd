@@ -2,14 +2,20 @@ package co.uis.proyecto.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
-@Entity@Table(name="procedimiento")
-@Data@NoArgsConstructor@AllArgsConstructor@Builder
+
+@Entity
+@Table(name = "procedimiento")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Procedimiento {
 
-    @Id@Column(name = "id_procedimiento")
+    @Id
+    @Column(name = "id_procedimiento")
     private int id_procedimiento;
 
-    @Column(name = "id_procedimiento")
+    @Column(name = "num_episodio")
     private int numero_episodio;
 
     @Column(name = "codigo_cup")
