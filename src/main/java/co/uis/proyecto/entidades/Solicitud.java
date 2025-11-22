@@ -1,52 +1,19 @@
 package co.uis.proyecto.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Entity
+@Entity@Table(name="solicitud")
+@Data@NoArgsConstructor@AllArgsConstructor@Builder
 public class Solicitud {
-    @Id
+    @Id@Column(name="num_solicitud")
     private long num_solicitud;
+    @Column(name="descripcion")
     private String descripcion;
+
+    @Column(name="fecha")
     private String fecha;
+
+    @Column(name="cedula_usuario")
     private long cedula_usuario;
-
-    public Solicitud(long num_solicitud, String descripcion, String fecha, long cedula_usuario) {
-        this.num_solicitud = num_solicitud;
-        this.descripcion = descripcion;
-        this.fecha = fecha;
-        this.cedula_usuario = cedula_usuario;
-    }
-
-    public long getNum_solicitud() {
-        return num_solicitud;
-    }
-
-    public void setNum_solicitud(long num_solicitud) {
-        this.num_solicitud = num_solicitud;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public long getCedula_usuario() {
-        return cedula_usuario;
-    }
-
-    public void setCedula_usuario(long cedula_usuario) {
-        this.cedula_usuario = cedula_usuario;
-    }
 }

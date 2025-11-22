@@ -1,61 +1,22 @@
 package co.uis.proyecto.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-@Entity
+import jakarta.persistence.*;
+import lombok.*;
+@Entity@Table(name="registro")
+@Data@NoArgsConstructor@AllArgsConstructor@Builder
 public class Registro {
-    @Id
+    @Id@Column(name = "num_registro")
     private int num_registro;
-    private String fecha;
-    private String hora;
-    private long num_historia;
-    private long num_usuario;
 
-    public Registro(int num_registro, String fecha, String hora, long num_historia, long num_usuario) {
-        this.num_registro = num_registro;
-        this.fecha = fecha;
-        this.hora = hora;
-        this.num_historia = num_historia;
-        this.num_usuario = num_usuario;
-    }
+    @Column(name = "id_usuario")
+    private int id_usuario;
 
-    public long getNum_registro() {
-        return num_registro;
-    }
+    @Column(name = "num_episodio")
+    private int num_episodio;
 
-    public void setNum_registro(int num_registro) {
-        this.num_registro = num_registro;
-    }
+    @Column(name = "fecha_hora_registro")
+    private String fecha_hora_registro;
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-    public long getNum_historia() {
-        return num_historia;
-    }
-
-    public void setNum_historia(long num_historia) {
-        this.num_historia = num_historia;
-    }
-
-    public long getNum_usuario() {
-        return num_usuario;
-    }
-
-    public void setNum_usuario(long num_usuario) {
-        this.num_usuario = num_usuario;
-    }
+    @Column(name = "tipo_acceso")
+    private String tipo_acceso;
 }

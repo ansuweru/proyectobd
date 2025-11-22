@@ -1,4 +1,7 @@
 package co.uis.proyecto.repositorios;
 
-public interface EpisodioClinicoRepository {
+import co.uis.proyecto.entidades.EpisodioClinico;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EpisodioClinicoRepository extends JpaRepository<EpisodioClinico,Integer> {
 }

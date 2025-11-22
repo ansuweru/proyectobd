@@ -1,4 +1,7 @@
 package co.uis.proyecto.repositorios;
 
-public interface DiagnosticoRepository {
+import co.uis.proyecto.entidades.Diagnostico;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DiagnosticoRepository extends JpaRepository<Diagnostico,Integer> {
 }
