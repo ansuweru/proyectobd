@@ -1,11 +1,17 @@
-<nav class="navbar navbar-dark bg-primary shadow-sm mb-4">
+<nav class="navbar navbar-dark bg-primary shadow-sm mb-4" *ngIf="authService.currentUser | async as user">
     <div class="container">
         <a class="navbar-brand" href="#">
             <i class="fas fa-file-medical-alt me-2"></i> Sistema de Archivo Clínico
         </a>
-        <span class="navbar-text text-white">
-            <i class="fas fa-user-circle"></i> Dr. Admin
-        </span>
+        <div class="d-flex align-items-center">
+            <span class="navbar-text text-white me-3">
+                <i class="fas fa-user-circle"></i> {{ user.nombreUsuario }}
+                <span class="badge bg-light text-primary ms-1">{{ user.rol }}</span>
+            </span>
+            <button class="btn btn-outline-light btn-sm" (click)="logout()">
+                <i class="fas fa-sign-out-alt"></i> Salir
+            </button>
+        </div>
     </div>
 </nav>
 

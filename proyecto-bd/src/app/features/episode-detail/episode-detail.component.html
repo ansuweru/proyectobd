@@ -1,0 +1,128 @@
+<div class="card" *ngIf="episodio">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h5 class="m-0"><i class="fas fa-notes-medical"></i> Detalle Episodio #{{ episodio.num_episodio }}</h5>
+        <span class="badge text-dark"
+            [ngClass]="{'bg-success': episodio.estado === 'Abierto', 'bg-secondary': episodio.estado === 'Cerrado'}">
+            {{ episodio.estado }}
+        </span>
+    </div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-8 border-end">
+                <div class="mb-4">
+                    <label class="fw-bold text-muted text-uppercase small">Anamnesis / Historia Actual</label>
+                    <div *ngIf="!isEditable" class="p-3 bg-light rounded border">
+                        {{ episodio.anamnesis || 'Sin registro' }}
+                    </div>
+                    <textarea *ngIf="isEditable" class="form-control" rows="4"
+                        [(ngModel)]="episodio.anamnesis"></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label class="fw-bold text-muted text-uppercase small">Examen Físico</label>
+                    <div *ngIf="!isEditable" class="p-3 bg-light rounded border">
+                        {{ episodio.examen_fisico || 'Sin registro' }}
+                    </div>
+                    <textarea *ngIf="isEditable" class="form-control" rows="4"
+                        [(ngModel)]="episodio.examen_fisico"></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label class="fw-bold text-muted text-uppercase small">Plan de Manejo</label>
+                    <div *ngIf="!isEditable" class="p-3 bg-light rounded border">
+                        {{ episodio.plan_manejo || 'Sin registro' }}
+                    </div>
+                    <textarea *ngIf="isEditable" class="form-control" rows="4"
+                        [(ngModel)]="episodio.plan_manejo"></textarea>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="alert alert-info mb-4">
+                    <i class="fas fa-user-md"></i> <strong>Atendido por:</strong><br>
+                    Dr. ID: {{ episodio.id_medico }}<br>
+                    <small>Medicina General</small>
+                </div>
+
+                <h6 class="text-primary border-bottom pb-2">Diagnósticos (CIE-10)</h6>
+                <table class="table table-sm small mb-4" *ngIf="diagnosticos.length > 0">
+                    <thead>
+                        <tr>
+                            <th>Cód</th>
+                            <th>Descripción</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let diag of diagnosticos">
+                            <td>{{ diag.codigo_cie }}</td>
+                            <td>{{ diag.descripcion }}</td>
+                            <td>{{ diag.tipo }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="diagnosticos.length === 0" class="text-muted small mb-4">No hay diagnósticos registrados.
+                </div>
+
+                <h6 class="text-primary border-bottom pb-2">Procedimientos (CUPS)</h6>
+                <ul class="list-group list-group-flush small mb-4" *ngIf="procedimientos.length > 0">
+                    <li class="list-group-item d-flex justify-content-between align-items-center"
+                        *ngFor="let proc of procedimientos">
+                        <div><strong>{{ proc.codigo_cup }}</strong> {{ proc.nombre_procedimiento }}</div>
+                        <i class="fas fa-check-circle text-success"></i>
+                    </li>
+                </ul>
+                <div *ngIf="procedimientos.length === 0" class="text-muted small mb-4">No hay procedimientos
+                    registrados.</div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-dark btn-sm" (click)="verAuditoria()"><i
+                            class="fas fa-shield-alt"></i> Ver Log de Auditoría</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-end">
+        <button class="btn btn-secondary" (click)="cerrarSinGuardar()">Cerrar sin Guardar</button>
+        <button class="btn btn-primary" *ngIf="isEditable" (click)="guardarCambios()"><i class="fas fa-save"></i>
+            Guardar Cambios</button>
+    </div>
+</div>
+
+<!-- Modal de Auditoría -->
+<div class="modal" tabindex="-1" [ngClass]="{'d-block': showModal}" style="background-color: rgba(0,0,0,0.5);">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Log de Auditoría - Episodio #{{ episodio?.num_episodio }}</h5>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Fecha/Hora</th>
+                            <th>Usuario</th>
+                            <th>Tipo Acceso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let log of logsAuditoria">
+                            <td>{{ log.registro.fecha_hora_registro }}</td>
+                            <td>{{ log.nombreUsuario }}</td>
+                            <td>{{ log.registro.tipo_acceso }}</td>
+                        </tr>
+                        <tr *ngIf="logsAuditoria.length === 0">
+                            <td colspan="3" class="text-center text-muted">No hay registros de auditoría para este
+                                episodio.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

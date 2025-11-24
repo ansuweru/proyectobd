@@ -50,4 +50,46 @@ INSERT INTO REGISTRO (num_registro, id_usuario, num_episodio, fecha_hora_registr
 (1, 500, 1001, '2025-10-15 09:35:00', 'Creación'),
 (2, 501, 1002, '2025-10-16 14:05:00', 'Creación'),
 (3, 502, 1003, '2025-10-18 08:00:00', 'Consulta'),
-(4, 500, 1004, '2025-11-20 16:10:00', 'Edición');
+(4, 500, 1004, '2025-11-20 16:10:00', 'Edición'),
+(5, 503, 1001, '2025-11-21 10:00:00', 'Consulta'),
+(6, 502, 2020202020, '2025-11-22 09:15:00', 'Consulta');
+
+-- Insertar Más Pacientes
+INSERT INTO PACIENTE (cedula, nombre, fecha_nacimiento, genero, direccion) VALUES
+(5050505050, 'Carlos Eduardo', '1990-12-12', 'M', 'Calle 100 #15-20'),
+(6060606060, 'Maria Fernanda', '1985-05-05', 'F', 'Carrera 7 #45-30'),
+(7070707070, 'Jorge Luis', '1978-09-09', 'M', 'Avenida 19 #10-10');
+
+-- Insertar Más Personal Médico
+INSERT INTO PERSONAL_MEDICO (id_medico, nombre_completo, especialidad, num_colegiado) VALUES
+(103, 'Dra. Laura Martinez', 'Dermatología', 223344),
+(104, 'Dr. Pedro Perez', 'Ortopedia', 556677);
+
+-- Insertar Más Usuarios
+INSERT INTO USUARIO_SISTEMA (id_usuario, nombre_usuario, rol, id_persona, contrasena) VALUES
+(504, 'lmartinez', 'Médico', 103, 'password'),
+(505, 'pperez', 'Médico', 104, 'password');
+
+-- Insertar Más Episodios
+INSERT INTO EPISODIO_CLINICO (num_episodio, cedula, id_medico, fecha_apertura, motivo_consulta, anamnesis, examen_fisico, plan_manejo, estado) VALUES
+(1005, 5050505050, 103, '2025-11-21 08:00:00', 'Manchas en la piel', 'Paciente presenta manchas rojas en brazos.', 'Lesiones eritematosas descamativas.', 'Crema corticoide tópica.', 'Cerrado'),
+(1006, 6060606060, 104, '2025-11-22 10:00:00', 'Dolor de espalda', 'Dolor lumbar crónico que empeora al estar de pie.', 'Dolor a la palpación lumbar. Lasegue negativo.', 'Radiografía de columna lumbar. Analgésicos.', 'Abierto'),
+(1007, 7070707070, 102, '2025-11-23 11:00:00', 'Chequeo general', 'Paciente asintomático desea chequeo.', 'Examen físico normal.', 'Exámenes de laboratorio de rutina.', 'Cerrado');
+
+-- Insertar Más Diagnósticos
+INSERT INTO DIAGNOSTICO (id_diagnostico, num_episodio, codigo_cie, descripcion, tipo) VALUES
+(5, 1005, 'L20', 'Dermatitis atópica', 'Confirmado'),
+(6, 1006, 'M545', 'Lumbago no especificado', 'Presuntivo'),
+(7, 1007, 'Z000', 'Examen médico general', 'Principal');
+
+-- Insertar Más Procedimientos
+INSERT INTO PROCEDIMIENTO (id_procedimiento, num_episodio, codigo_cup, nombre_procedimiento, fecha_procedimiento) VALUES
+(4, 1006, '873204', 'Radiografía de columna lumbosacra', '2025-11-22'),
+(5, 1007, '902213', 'Hemograma IV', '2025-11-23'),
+(6, 1003, '902213', 'Hemograma IV', '2025-10-17'),
+(7, 1005, '890201', 'Consulta dermatológica', '2025-11-21');
+
+-- Insertar Más Solicitudes
+INSERT INTO SOLICITUD (num_solicitud, cedula, descripcion, fecha_solicitud) VALUES
+(4, 5050505050, 'Solicitud de historia clínica para especialista', '2025-11-21'),
+(5, 6060606060, 'Certificado de incapacidad', '2025-11-22');
