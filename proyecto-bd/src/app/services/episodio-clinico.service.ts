@@ -7,7 +7,7 @@ import { EpisodioClinico } from '../models/clinical-models';
     providedIn: 'root'
 })
 export class EpisodioClinicoService {
-    private apiUrl = 'http://localhost:8080/api/episodios';
+    private apiUrl = '/api/episodios';
 
     constructor(private http: HttpClient) { }
 

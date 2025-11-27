@@ -7,7 +7,7 @@ import { Solicitud } from '../models/clinical-models';
     providedIn: 'root'
 })
 export class SolicitudService {
-    private apiUrl = 'http://localhost:8080/api/solicitudes';
+    private apiUrl = '/api/solicitudes';
 
     constructor(private http: HttpClient) { }
 

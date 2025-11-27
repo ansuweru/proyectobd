@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://q08rh8ql-8080.use.devtunnels.ms",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

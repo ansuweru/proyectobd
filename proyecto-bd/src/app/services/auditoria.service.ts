@@ -12,7 +12,7 @@ export interface LogAuditoriaDTO {
     providedIn: 'root'
 })
 export class AuditoriaService {
-    private apiUrl = 'http://localhost:8080/api/auditoria';
+    private apiUrl = '/api/auditoria';
 
     constructor(private http: HttpClient) { }
 
